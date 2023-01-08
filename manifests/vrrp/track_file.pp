@@ -19,15 +19,15 @@ define keepalived::vrrp::track_file (
   Optional[String[1]] $init_file  = undef,
   Boolean $overwrite              = false,
 ) {
-  if SemVer.new($facts['keepalived_version']) >= SemVer.new("2.1.0") {
+  if SemVer.new($facts['keepalived_version']) >= SemVer.new('2.1.0') {
     concat::fragment { "keepalived.conf_vrrp_track_file_${file_name}":
       target  => "${keepalived::config_dir}/keepalived.conf",
       content => epp('keepalived/track_file.epp', {
-        'name'      => $name,
-        'file_name' => $file_name,
-        'weight'    => $weight,
-        'init_file' => $init_file,
-        'overwrite' => $overwrite,
+          'name'      => $name,
+          'file_name' => $file_name,
+          'weight'    => $weight,
+          'init_file' => $init_file,
+          'overwrite' => $overwrite,
       }),
       order   => '015',
     }
@@ -35,11 +35,11 @@ define keepalived::vrrp::track_file (
     concat::fragment { "keepalived.conf_vrrp_track_file_${file_name}":
       target  => "${keepalived::config_dir}/keepalived.conf",
       content => epp('keepalived/vrrp_track_file.epp', {
-        'name'      => $name,
-        'file_name' => $file_name,
-        'weight'    => $weight,
-        'init_file' => $init_file,
-        'overwrite' => $overwrite,
+          'name'      => $name,
+          'file_name' => $file_name,
+          'weight'    => $weight,
+          'init_file' => $init_file,
+          'overwrite' => $overwrite,
       }),
       order   => '015',
     }
