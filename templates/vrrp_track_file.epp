@@ -4,7 +4,7 @@
       Optional[String]  $init_file,
       Optional[Boolean] $overwrite
     | -%>
-track_file <%= $name %> {
+vrrp_track_file <%= $name %> {
   file     "<%= $file_name %>"
   <%- if $weight { -%>
   weight      <%= $weight %>
